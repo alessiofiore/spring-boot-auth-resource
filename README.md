@@ -1,1 +1,1 @@
-# spring-boot-auth-resource
+# Spring Cloud Auth Resource Server
