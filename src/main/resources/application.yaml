@@ -5,3 +5,9 @@ security:
   jwt:    
     signing-key: MaYzkSjmkzPC57L
     resource-ids: testjwtresourceid
+    
+    
+logging:
+  level:
+    org:
+      springframework: INFO

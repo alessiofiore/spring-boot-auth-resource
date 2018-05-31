@@ -59,10 +59,6 @@ public class ResourceServiceConfig extends ResourceServerConfigurerAdapter {
     /*
      * JTW Token Store configuration
      */
-    @Bean
-	public TokenStore tokenStore() {
-		return new JwtTokenStore(accessTokenConverter());
-	}
 
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
@@ -70,13 +66,18 @@ public class ResourceServiceConfig extends ResourceServerConfigurerAdapter {
 		converter.setSigningKey(signingKey);
 		return converter;
 	}
+	
+    @Bean
+	public TokenStore tokenStore() {
+		return new JwtTokenStore(accessTokenConverter());
+	}
 
 	@Bean
 	@Primary
 	public DefaultTokenServices tokenServices() {
 		DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
 		defaultTokenServices.setTokenStore(tokenStore());
-		defaultTokenServices.setSupportRefreshToken(true);
+		defaultTokenServices.setSupportRefreshToken(false);
 		return defaultTokenServices;
 	}
 
